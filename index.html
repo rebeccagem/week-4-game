@@ -8,44 +8,47 @@
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
         crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
 </head>
 
 <body>
-
-
     <!-- Jumbotron for Title -->
-
     <nav class="navbar navbar-light bg-light text-center">
-        <h1>RPG GAME</h1>
+        <h1>Battle of the Snails</h1>
     </nav>
 
-    <div class="jumbotron">
-        <h2 class="text-center">Choose Your Character</h2>
+    <div class="container chooseSnail">
+        <h2 class="text-center">Whose slime smells the best?</h2>
         <div class="row text-center">
             <div class="col-sm-6 col-md-3">
-                <button class="character" value="1">
-                    <img src="http://via.placeholder.com/100x100">
-                    <p>Name 1</p>
+                <button class="snailProfile" value="snail1">
+                    <img class="profilePic" src="./assets/images/snailOne.png">
+                    <h4>Peto</h4>
+                    <p>Eater Of Sheep</p>
                 </button>
 
             </div>
             <div class="col-sm-6 col-md-3">
-                <button class="character" value="2">
-                    <img src="http://via.placeholder.com/100x100">
-                    <p>Name 2</p>
+                <button class="snailProfile" value="snail2">
+                    <img class="profilePic" src="./assets/images/snailTwo.png">
+                    <h4>Greren</h4>
+                    <p>Lord Of The Green</p>
                 </button>
             </div>
             <div class="col-sm-6 col-md-3">
-                <button class="character" value="3">
-                    <img src="http://via.placeholder.com/100x100">
-                    <p>Name 3</p>
+                <button class="snailProfile" value="snail3">
+                    <img class="profilePic" src="./assets/images/snailThree.png">
+                    <h4>Cymbicryth</h4>
+                    <p>Champion Of The Skies</p>
                 </button>
             </div>
             <div class="col-sm-6 col-md-3">
-                <button class="character" value="4">
-                    <img src="http://via.placeholder.com/100x100">
-                    <p>Name 4</p>
+                <button class="snailProfile" value="snail4">
+                    <img class="profilePic" src="./assets/images/snailFour.png">
+                    <h4>Kelri</h4>
+                    <p>The Taker Of Life</p>
                 </button>
             </div>
         </div>
@@ -54,19 +57,19 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-6">
-                <h3>User Character Name</h3>
-                <p>Put Health Bar Here</p>
-                <img src="http://via.placeholder.com/200x200">
+                <h3 id="userChoiceName">User Snail Name</h3>
+                <p id="userChoiceHealth">Put Health Bar Here</p>
+                <img id="userChoicePic" src="http://via.placeholder.com/200x200">
             </div>
             <div class="col-md-6">
-                    <h3>Enemy Character Name</h3>
-                <p>Put Health Bar Here</p>
-                <img src="http://via.placeholder.com/200x200">
+                    <h3 id="enemyName">Enemy Snail Name</h3>
+                <p id="enemyHealth">Put Health Bar Here</p>
+                <img id="enemyPic" src="http://via.placeholder.com/200x200">
             </div>
         </div>
         <div class="row text-center">
             <div class="col-md-12">
-                <button type="button" class="btn btn-danger">ATTACK</button>
+                <button type="button" class="btn btn-danger" id="attack">ATTACK</button>
             </div>
         </div>
     </div>
@@ -75,14 +78,7 @@
     <!-- Added link to the jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-
-        });
-
-    </script>
+    <script type="text/javascript" src="./assets/javascript/game.js"></script>
 
 </body>
 
