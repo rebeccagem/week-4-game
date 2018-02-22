@@ -68,3 +68,14 @@ h1{
  #attack {
      margin-bottom:20px;
  }
+
+ h5 {
+    font-family: 'Patua One', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    line-height: 30px;
+ }
+
+ .redText {
+     color:rgb(151, 0, 0);
+ }

@@ -41,16 +41,16 @@ $(document).ready(function () {
                 break;
 
             case 'snail4': snailUser = snail4;
-                snailUserIndex =3;
+                snailUserIndex = 3;
         }
         //Check if characters are choosen, if so, then display play field.
-        console.log(snailUser.name)
         $("#userChoiceName").text(snailUser.name);
         $("#userChoiceHealth").text(snailUser.health);
         $("#userChoicePic").attr("src", snailUser.image);
 
         generateEnemySnail();
         $("#attack").removeClass("hide");
+
         $("#battleGround").removeClass("hide");
         $(".chooseSnail").addClass("hide");
 
@@ -66,13 +66,10 @@ $(document).ready(function () {
             generateEnemySnail();
         }
         else {
-            console.log("DEFEATED ARRAY LENGTH: "+defeatedArray.length);
             for (i = 0; i < defeatedArray.length; i++) {
-                console.log(defeatedArray[i].name);
                 if (enemyChoice.name === defeatedArray[i].name) {
-                    console.log("IN THE IF STATEMENT");
                     generateEnemySnail();
-                    
+
                 }
             }
             $("#enemyName").text(enemyChoice.name);
@@ -84,9 +81,16 @@ $(document).ready(function () {
 
     //Make an event listener for when the attack button is pressed
     $("#attack").on("click", function () {
+        // giveSnailsAttackValues();
         enemyChoice.health = enemyChoice.health - snailUser.attack;
         snailUser.health = snailUser.health - enemyChoice.attack;
         updateHealth();
+        //this stuff displays the damage above the attack button
+        $("#attackText").removeClass("hide");
+        $("#userSnailName").text(snailUser.name);
+        $("#userSnailAttackAmount").text(snailUser.attack);
+        $("#enemySnailName").text(enemyChoice.name);
+        $("#enemySnailAttackAmount").text(enemyChoice.attack);
         checkWin();
     });
 
@@ -100,34 +104,35 @@ $(document).ready(function () {
     //check to see if either character's health value = 0 or below. If so, trigger win/lose..
     function checkWin() {
         if (enemyChoice.health < 1) {
-            // setTimeout(function () {
-        
-                defeatedArray.push(enemyChoice);
+            // 
 
-                if (defeatedArray.length === 1){
-                    $("#defeated1").attr("src", enemyChoice.defeatImage);
-                    roundOver();
-                }
-                if (defeatedArray.length === 2){
-                    $("#defeated2").attr("src", enemyChoice.defeatImage);
-                    roundOver();
-                }
-                if (defeatedArray.length === 3){
-                    $("#defeated3").attr("src", enemyChoice.defeatImage);
+            defeatedArray.push(enemyChoice);
+
+            if (defeatedArray.length === 1) {
+                $("#defeated1").attr("src", enemyChoice.defeatImage);
+                roundOver();
+            }
+            if (defeatedArray.length === 2) {
+                $("#defeated2").attr("src", enemyChoice.defeatImage);
+                roundOver();
+            }
+            if (defeatedArray.length === 3) {
+                $("#defeated3").attr("src", enemyChoice.defeatImage);
+                setTimeout(function () {
                     alert("You killed all your fellow snails! Enjoy the rest of you lonely life... :/");
-                    gameOver();
-                }
-                
-                console.log(defeatedArray);
-            // }, 200);
-            // window.setTimeout(gameOver, 400);
+                }, 200);
+                // gameOver();
+                window.setTimeout(gameOver, 400);
+            }
+
 
         }
         else if (snailUser.health < 1) {
-                // roundOver();
-                // these reset the screen if you choose a loser snail
-                gameOver();
-            // window.setTimeout(gameOver, 400);
+            $("#attackText").addClass("hide");
+            // roundOver();
+            // these reset the screen if you choose a loser snail
+            gameOver();
+            window.setTimeout(gameOver, 400);
         }
         else {
         }
@@ -168,6 +173,26 @@ $(document).ready(function () {
         snailArray = [snail1, snail2, snail3, snail4];
 
     }
+
+    var attackValue;
+
+    //function to generate random attack value
+    function generateAttackValue() {
+        attackValue = Math.floor(Math.random() * 20) + 18;
+        // enemyChoice = snailArray[randomNum];
+    }
+
+    function giveSnailsAttackValues() {
+        generateAttackValue();
+        snailUser.attack = attackValue;
+        console.log(snailUser.attack);
+        generateAttackValue();
+        enemyChoice.attack = attackValue;
+        console.log(enemyChoice.attack);
+
+    }
+
+
     //make a varible to display health bar from user choice and a varibale to display health bar from computer choice
 
     //randomly generate attack each time attack button is pressed (15-25)
