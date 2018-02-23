@@ -81,9 +81,10 @@ $(document).ready(function () {
 
     //Make an event listener for when the attack button is pressed
     $("#attack").on("click", function () {
-        // giveSnailsAttackValues();
-        enemyChoice.health = enemyChoice.health - snailUser.attack;
-        snailUser.health = snailUser.health - enemyChoice.attack;
+        giveSnailsAttackValues();
+        snailUser.attack += 5;
+        enemyChoice.health -= snailUser.attack;
+        snailUser.health -= enemyChoice.attack;
         updateHealth();
         //this stuff displays the damage above the attack button
         $("#attackText").removeClass("hide");
@@ -127,19 +128,18 @@ $(document).ready(function () {
 
 
         }
-        else if (snailUser.health < 1) {
+        if (snailUser.health < 1) {
             $("#attackText").addClass("hide");
             // roundOver();
             // these reset the screen if you choose a loser snail
             gameOver();
             window.setTimeout(gameOver, 400);
         }
-        else {
-        }
+        
     }
 
     function roundOver() {
-        makeSnails();
+        // makeSnails();
         snailUser = snailArray[snailUserIndex];
         updateHealth();
         generateEnemySnail();
@@ -147,6 +147,7 @@ $(document).ready(function () {
     }
 
     function gameOver() {
+        makeSnails();
         $("#attack").addClass("hide");
         $(".chooseSnail").removeClass("hide");
         $("#enemyPic").attr("src", "");
@@ -158,17 +159,18 @@ $(document).ready(function () {
         $("#defeated1").attr("src", "");
         $("#defeated2").attr("src", "");
         $("#defeated3").attr("src", "");
+        $("#attackText").addClass("hide");
         defeatedArray.length = 0;
     }
 
     function makeSnails() {
         snail1 = { name: "Peto", health: 100, attack: 10, image: "./assets/images/Peto-Left.png", enemyImage: "./assets/images/Peto-Right.png", defeatImage: "./assets/images/Peto-Defeated.png" };
 
-        snail2 = { name: "Greren", health: 120, attack: 6, image: "./assets/images/Grerern-Left.png", enemyImage: "./assets/images/Grerern-Right.png", defeatImage: "./assets/images/Greren-Defeated.png" };
+        snail2 = { name: "Greren", health: 120, attack: 10, image: "./assets/images/Grerern-Left.png", enemyImage: "./assets/images/Grerern-Right.png", defeatImage: "./assets/images/Greren-Defeated.png" };
 
-        snail3 = { name: "Cymbicryth", health: 110, attack: 8, image: "./assets/images/Cymb-Left.png", enemyImage: "./assets/images/Cymb-Right.png", defeatImage: "./assets/images/Cymb-Defeated.png" };
+        snail3 = { name: "Cymbicryth", health: 110, attack: 10, image: "./assets/images/Cymb-Left.png", enemyImage: "./assets/images/Cymb-Right.png", defeatImage: "./assets/images/Cymb-Defeated.png" };
 
-        snail4 = { name: "Kelri", health: 105, attack: 9, image: "./assets/images/Kelri-Left.png", enemyImage: "./assets/images/Kelri-Right.png", defeatImage: "./assets/images/Kelri-Defeated.png" };
+        snail4 = { name: "Kelri", health: 105, attack: 10, image: "./assets/images/Kelri-Left.png", enemyImage: "./assets/images/Kelri-Right.png", defeatImage: "./assets/images/Kelri-Defeated.png" };
 
         snailArray = [snail1, snail2, snail3, snail4];
 
@@ -178,14 +180,14 @@ $(document).ready(function () {
 
     //function to generate random attack value
     function generateAttackValue() {
-        attackValue = Math.floor(Math.random() * 20) + 18;
-        // enemyChoice = snailArray[randomNum];
+        attackValue = Math.floor(Math.random() * 8) + 8;
+       // enemyChoice = snailArray[randomNum];
     }
 
     function giveSnailsAttackValues() {
-        generateAttackValue();
-        snailUser.attack = attackValue;
-        console.log(snailUser.attack);
+        // generateAttackValue();
+        // snailUser.attack = attackValue;
+        // console.log(snailUser.attack);
         generateAttackValue();
         enemyChoice.attack = attackValue;
         console.log(enemyChoice.attack);

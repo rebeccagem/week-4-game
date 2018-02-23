@@ -58,39 +58,37 @@
 
         <div class="row text-center">
             <div class="col-md-6">
-                <img id="userChoicePic" src="">
+                <img class="battlePic" id="userChoicePic" src="">
             </div>
             <div class="col-md-6">
-                <img id="enemyPic" src="">
+                <img class="battlePic" id="enemyPic" src="">
             </div>
         </div>
         <div class="row text-center">
-            <div class="col-md-12">
-                <button type="button" class="btn btn-danger hide" id="attack">ATTACK</button>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-md-6">
+            <div class="col-md-4 right">
                 <h3 id="userChoiceName"></h3>
                 <p id="userChoiceHealth"></p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-danger hide" id="attack">ATTACK</button>
+            </div>
+            <div class="col-md-4 left">
                 <h3 id="enemyName"></h3>
                 <p id="enemyHealth"></p>
             </div>
         </div>
     </div>
     <div class="row text-center">
-            <div class="col-md-12">
-                <h5 class="hide" id="attackText">
-                    <span id="userSnailName"></span> attacked for
-                    <span id="userSnailAttackAmount" class="redText"></span>
-                    </br>
-                    <span id="enemySnailName"></span> attacked for
-                    <span id="enemySnailAttackAmount" class="redText"></span>
-                </h5>
-            </div>
+        <div class="col-md-12">
+            <h5 class="hide" id="attackText">
+                <span id="userSnailName"></span> attacked for
+                <span id="userSnailAttackAmount" class="redText"></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span id="enemySnailName"></span> attacked for
+                <span id="enemySnailAttackAmount" class="redText"></span>
+            </h5>
         </div>
+    </div>
     <div class="container defeatedSnails">
         <div class="row text-center">
             <div class="col-sm-6 col-md-4">
