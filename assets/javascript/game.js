@@ -2,7 +2,6 @@ $(document).ready(function () {
     console.log("HELLO");
 
     //make a variable to hold user choice and a variable to hold randomly generated choice from the other characters
-
     var enemyChoice = {};
 
     var snailUser = {};
@@ -23,6 +22,7 @@ $(document).ready(function () {
     var snailUserIndex;
 
     makeSnails();
+
 
     //make an event listener for when user clicks on character
     $(".snailProfile").on("click", function () {
@@ -50,12 +50,11 @@ $(document).ready(function () {
 
         generateEnemySnail();
         $("#attack").removeClass("hide");
-
+        $(".progress").removeClass("hide");
         $("#battleGround").removeClass("hide");
         $(".chooseSnail").addClass("hide");
-
+        updateProgBar();
     });
-
 
     //trigger the computer to randomly choose a character from those remaining
     function generateEnemySnail() {
@@ -75,6 +74,7 @@ $(document).ready(function () {
             $("#enemyName").text(enemyChoice.name);
             $("#enemyHealth").text(enemyChoice.health);
             $("#enemyPic").attr("src", enemyChoice.enemyImage);
+
         }
 
     }
@@ -92,9 +92,12 @@ $(document).ready(function () {
         $("#userSnailAttackAmount").text(snailUser.attack);
         $("#enemySnailName").text(enemyChoice.name);
         $("#enemySnailAttackAmount").text(enemyChoice.attack);
+//affects health bars
+        updateProgBar();
+        console.log(enemyChoice.health);
+        console.log(snailUser.health);
         checkWin();
     });
-
 
     function updateHealth() {
         $("#enemyHealth").text(enemyChoice.health);
@@ -105,8 +108,6 @@ $(document).ready(function () {
     //check to see if either character's health value = 0 or below. If so, trigger win/lose..
     function checkWin() {
         if (enemyChoice.health < 1) {
-            // 
-
             defeatedArray.push(enemyChoice);
 
             if (defeatedArray.length === 1) {
@@ -122,7 +123,6 @@ $(document).ready(function () {
                 setTimeout(function () {
                     alert("You killed all your fellow snails! Enjoy the rest of you lonely life... :/");
                 }, 200);
-                // gameOver();
                 window.setTimeout(gameOver, 400);
             }
 
@@ -130,20 +130,17 @@ $(document).ready(function () {
         }
         if (snailUser.health < 1) {
             $("#attackText").addClass("hide");
-            // roundOver();
             // these reset the screen if you choose a loser snail
             gameOver();
             window.setTimeout(gameOver, 400);
         }
-        
     }
 
     function roundOver() {
-        // makeSnails();
         snailUser = snailArray[snailUserIndex];
         updateHealth();
         generateEnemySnail();
-
+        updateProgBar();
     }
 
     function gameOver() {
@@ -160,6 +157,7 @@ $(document).ready(function () {
         $("#defeated2").attr("src", "");
         $("#defeated3").attr("src", "");
         $("#attackText").addClass("hide");
+        $(".progress").addClass("hide");
         defeatedArray.length = 0;
     }
 
@@ -181,29 +179,21 @@ $(document).ready(function () {
     //function to generate random attack value
     function generateAttackValue() {
         attackValue = Math.floor(Math.random() * 8) + 8;
-       // enemyChoice = snailArray[randomNum];
     }
 
     function giveSnailsAttackValues() {
-        // generateAttackValue();
-        // snailUser.attack = attackValue;
-        // console.log(snailUser.attack);
         generateAttackValue();
         enemyChoice.attack = attackValue;
         console.log(enemyChoice.attack);
 
     }
 
+    function updateProgBar() {
+        $("#enemyProgBar").attr("aria-valuenow",enemyChoice.health);
+        $("#userProgBar").attr("aria-valuenow",snailUser.health);
+        $("#enemyProgBar").attr("style","width:"+ enemyChoice.health+"%");
+        $("#userProgBar").attr("style", "width:"+ snailUser.health+"%");
+    }
 
-    //make a varible to display health bar from user choice and a varibale to display health bar from computer choice
 
-    //randomly generate attack each time attack button is pressed (15-25)
-
-    //make a function to substract user choice attack value from computer choice health value
-    //display that shit
-
-    //make function to subtract computer choice attack value from user choice health value
-    //display that shit
-
-    //add to scoreboard, then reset hide play field with you win/ you lose screen until character is chosen again
 });

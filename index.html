@@ -14,11 +14,11 @@
 </head>
 
 <body>
-    <!-- Jumbotron for Title -->
+    <!-- title -->
     <nav class="navbar navbar-light bg-light text-center">
         <h1>Battle of the Snails</h1>
     </nav>
-
+    <!-- snail profiles to choose from-->
     <div class="container chooseSnail">
         <h2 class="text-center">Whose slime smells the best?</h2>
         <div class="row text-center">
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-
+<!-- snail battleground-->
     <div class="container battleGround">
 
         <div class="row text-center">
@@ -68,6 +68,9 @@
             <div class="col-md-4 right">
                 <h3 id="userChoiceName"></h3>
                 <p id="userChoiceHealth"></p>
+                <div class="progress hide">
+                    <div id="userProgBar" class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
             </div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-danger hide" id="attack">ATTACK</button>
@@ -75,9 +78,13 @@
             <div class="col-md-4 left">
                 <h3 id="enemyName"></h3>
                 <p id="enemyHealth"></p>
+                <div class="progress hide">
+                    <div id="enemyProgBar" class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
             </div>
         </div>
     </div>
+    <!-- battling snails' info-->
     <div class="row text-center">
         <div class="col-md-12">
             <h5 class="hide" id="attackText">
@@ -89,6 +96,7 @@
             </h5>
         </div>
     </div>
+    <!-- defeated snails-->
     <div class="container defeatedSnails">
         <div class="row text-center">
             <div class="col-sm-6 col-md-4">
